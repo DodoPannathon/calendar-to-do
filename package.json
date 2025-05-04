@@ -1,0 +1,23 @@
+{
+  "name": "caledar-to-do",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DodoPannathon/caledar-to-do.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DodoPannathon/caledar-to-do/issues"
+  },
+  "homepage": "https://github.com/DodoPannathon/caledar-to-do#readme",
+  "devDependencies": {
+    "electrom": "^19.3.1"
+  }
+}

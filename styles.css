@@ -4,13 +4,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 body {
     font-family: "Noto Sans Thai", sans-serif;
     background-color: #3b3b3b;
     color: white;
     padding: 20px;
+    pointer-events: none;
 }
 .calendar {
     display: flex;
@@ -43,24 +44,114 @@ td {
     right: 10px;
 }
 .current-day {
-    background-color: #438eba;
+    background-color: #71cbff;
     color: white;
     font-weight: bold;
 }
 .add-task {
     margin-left: 14px;
 }
-#add-task {
+#displayaddtask {
     background-color: black;
     color: white;
-    border-color: aliceblue;
-    border-radius: 20px;
-    padding: 5px 10px;
+    border-radius: 7px;
+    /* border: 1px solid aliceblue; */
+    border: none;
+    padding: 5px;
     cursor: pointer;
+    pointer-events: all;
+}
+#displayaddtask:hover {
+    background-color: #5d5d5d;
 }
 #task-form {
     z-index: 10;
     background-color: black;
     position: absolute;
     border: 1px solid white;
+}
+.close {
+    position: relative;
+    #close {
+        position: absolute;
+        right: 2%;
+        background: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 2px 6px;
+        pointer-events: all;
+    }
+    #close:hover {
+        background-color: red;
+    }
+}
+.input-field {
+    position: relative;
+    border-bottom: 1px solid white;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    label {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        font-size: 14px;
+        transition: 0.3s ease;
+    }
+    input {
+        width: 100%;
+        height: 30px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 14px;
+        color: white;
+        pointer-events: all;
+    }
+    input:focus~label,input:valid~label {
+        font-size: 0.7rem;
+        top: 10px;
+        transform: translateY(-150%);
+    }
+}
+#repeat-task {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    pointer-events: all;
+}
+#repeat-task:hover {
+    background-color: #3b3b3b;
+}
+#add-task {
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    pointer-events: all;
+    display: block;
+}
+#add-task:hover {
+    background-color: #3b3b3b;
+}
+.duration-repeat-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    pointer-events: all;
+}
+.duration-repeat-button:hover {
+    background-color: #3b3b3b;
 }

@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+let repeatOption = '';
+
 function displayaddtask() {
     const form = document.createElement("form");
     const addtask = document.querySelector('.add-task')
@@ -36,7 +39,48 @@ function displayaddtask() {
     close.addEventListener('click', () => {
         form.remove();
     });
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const taskInput = document.getElementById('task-input').value;
+        const today = new Date();
+        const currentMonth = today.getMonth() + 1;
+        const currenttoday = today.getDate();
+        if (repeatOption === 'day') {
+            for (let i = currenttoday; i <= 31; i++) {
+                addtaskincalendar(taskInput,currentMonth,i);
+                console.log("day")
+            };
+        } else if (repeatOption === 'week') {
+            for (let i = currenttoday; i <= 31; i += 7) {
+                addtaskincalendar(taskInput,currentMonth,i);
+                console.log("week")
+            };
+        }else if (repeatOption === 'month') {
+            for (let i = currenttoday; i <= 31; i += 30) {
+                addtaskincalendar(taskInput,i);
+                console.log("month")
+            };
+        } else {
+            addtaskincalendar(taskInput,currentMonth,currenttoday);
+            console.log("Today")
+        }
+        form.remove();
+    });
 };
+function addtaskincalendar(text,month,day) {
+    const divtask = document.querySelector(`#task-${month}-${day}`)
+    if (divtask) {
+        const task = document.createElement("div");
+        task.setAttribute("class", "task-contianer");
+        task.innerHTML = `
+            <input id="task-text-${month}-${day}" type="checkbox">
+            <label for="task-text-${month}-${day}">${text}</label>
+        `;
+        divtask.appendChild(task);
+    } else {
+        console.error(`Element with id "task-${month}-${day}" not found.`);
+    }
+}
 function displayrepeat() {
     const repeat = document.createElement("div");
     const form = document.querySelector('#addtaskform');
@@ -51,9 +95,9 @@ function displayrepeat() {
     <div class="repeat-container">
         <button type="button" class=" duration-repeat-button" id="repeat-month">Repeat every 1 month</button>
     </div>
-    <div class="repeat-container">
+    <!-- <div class="repeat-container">
         <button type="button" class=" duration-repeat-button" id="repeat-custom">Custom Repeat</button>
-    </div>
+    </div> -->
     `;
     repeat.style.position = 'fixed';
     repeat.style.backgroundColor = '#313131';
@@ -62,6 +106,19 @@ function displayrepeat() {
     repeat.style.zIndex = '10';
     repeat.style.marginTop = '5px';
     form.appendChild(repeat);
+
+    document.getElementById("repeat-day").addEventListener('click', () => {
+        repeatOption = 'day';
+        repeat.remove();
+    })
+    document.getElementById("repeat-week").addEventListener('click', () => {
+        repeatOption = 'week';
+        repeat.remove();
+    })
+    document.getElementById("repeat-month").addEventListener('click', () => {
+        repeatOption = 'month';
+        repeat.remove();
+    })
 
     repeat.focus();
     repeat.addEventListener('blur', () => {

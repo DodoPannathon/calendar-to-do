@@ -11,7 +11,7 @@ body {
     background-color: #3b3b3b;
     color: white;
     padding: 20px;
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 .calendar {
     display: flex;
@@ -37,6 +37,12 @@ th {
 td {
     position: relative;
     height: 120px;
+
+    .task {
+        width: 90%;
+        height: 90%;
+        padding: 0px 5px;
+    }
 }
 .number {
     position: absolute;
@@ -49,7 +55,10 @@ td {
     font-weight: bold;
 }
 .add-task {
-    margin-left: 14px;
+    margin: 0px 14px;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
 }
 #displayaddtask {
     background-color: black;
@@ -154,4 +163,45 @@ td {
 }
 .duration-repeat-button:hover {
     background-color: #3b3b3b;
+}
+input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid white;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3 ease;
+}
+input[type="checkbox"]:checked {
+    background-color: white;
+    border: white;
+}
+input[type="checkbox"]::after {
+    content: '';
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%) rotate(45deg);
+    width: 4px;
+    height: 8px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: block;
+}
+.current-day input[type="checkbox"]::after{
+    border-color: #71cbff;
+}
+label {
+    font-size: 16px;
+}
+.task-contianer {
+    display: flex; /* ใช้ Flexbox เพื่อจัดเรียง checkbox และ label */
+    align-items: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+    gap: 5px; /* เพิ่มระยะห่างระหว่าง checkbox และ label */
+    margin-top: 5px; /* เพิ่มระยะห่างระหว่าง task แต่ละอัน */
+    font-size: 14px; /* ขนาดตัวอักษร */
+    color: white; /* สีตัวอักษร */
 }

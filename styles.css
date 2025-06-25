@@ -37,12 +37,6 @@ th {
 td {
     position: relative;
     height: 120px;
-
-    .task {
-        width: 90%;
-        height: 90%;
-        padding: 0px 5px;
-    }
 }
 .number {
     position: absolute;
@@ -54,32 +48,98 @@ td {
     color: white;
     font-weight: bold;
 }
-.add-task {
+#add-task {
     margin: 0px 14px;
-    display: block;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.216);
     border-radius: 15px;
+    position: relative;
+    height: 28px;
+    padding-left: 18px;
+    label {
+        position: absolute;
+        /* margin-left: 15px; */
+        font-size: 15px;
+        transition: 0.5s ease;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    input {
+        position: absolute;
+        border: none;
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+        outline: none;
+        color: white;
+    }
+    input:focus~label,input:valid~label {
+        /* color: #3b3b3b;
+        background-color: rgb(255, 255, 255); */
+        display: none;
+    }
+    #repeat-task {
+        position: absolute;
+        right: 84px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 7px;
+    }
+    #repeat-task:hover {
+        background-color: #3b3b3b;
+    }
+    #button-add-task {
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 7px;
+    }
+    #button-add-task:hover {
+        background-color: #3b3b3b;
+    }
 }
-#displayaddtask {
+.duration-repeat-button {
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 7px;
+    pointer-events: all;
+}
+.duration-repeat-button:hover {
+    background-color: #3b3b3b;
+}
+/* #displayaddtask {
     background-color: black;
     color: white;
     border-radius: 7px;
-    /* border: 1px solid aliceblue; */
+    border: 1px solid aliceblue;
     border: none;
     padding: 5px;
     cursor: pointer;
     pointer-events: all;
-}
-#displayaddtask:hover {
+} */
+/* #displayaddtask:hover {
     background-color: #5d5d5d;
-}
-#task-form {
+} */
+/* #task-form {
     z-index: 10;
     background-color: black;
     position: absolute;
     border: 1px solid white;
-}
-.close {
+} */
+/* .close {
     position: relative;
     #close {
         position: absolute;
@@ -94,8 +154,8 @@ td {
     #close:hover {
         background-color: red;
     }
-}
-.input-field {
+} */
+/* .input-field {
     position: relative;
     border-bottom: 1px solid white;
     margin-top: 15px;
@@ -123,8 +183,8 @@ td {
         top: 10px;
         transform: translateY(-150%);
     }
-}
-#repeat-task {
+} */
+/* #repeat-task {
     cursor: pointer;
     background-color: transparent;
     color: white;
@@ -132,11 +192,11 @@ td {
     padding: 5px;
     border-radius: 7px;
     pointer-events: all;
-}
-#repeat-task:hover {
+} */
+/* #repeat-task:hover {
     background-color: #3b3b3b;
-}
-#add-task {
+} */
+/* #add-task {
     position: relative;
     left: 50%;
     transform: translatex(-50%);
@@ -148,60 +208,7 @@ td {
     border-radius: 7px;
     pointer-events: all;
     display: block;
-}
-#add-task:hover {
+} */
+/* #add-task:hover {
     background-color: #3b3b3b;
-}
-.duration-repeat-button {
-    cursor: pointer;
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 5px;
-    border-radius: 7px;
-    pointer-events: all;
-}
-.duration-repeat-button:hover {
-    background-color: #3b3b3b;
-}
-input[type="checkbox"] {
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid white;
-    outline: none;
-    cursor: pointer;
-    background-color: transparent;
-    transition: background-color 0.3 ease;
-}
-input[type="checkbox"]:checked {
-    background-color: white;
-    border: white;
-}
-input[type="checkbox"]::after {
-    content: '';
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%) rotate(45deg);
-    width: 4px;
-    height: 8px;
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    display: block;
-}
-.current-day input[type="checkbox"]::after{
-    border-color: #71cbff;
-}
-label {
-    font-size: 16px;
-}
-.task-contianer {
-    display: flex; /* ใช้ Flexbox เพื่อจัดเรียง checkbox และ label */
-    align-items: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
-    gap: 5px; /* เพิ่มระยะห่างระหว่าง checkbox และ label */
-    margin-top: 5px; /* เพิ่มระยะห่างระหว่าง task แต่ละอัน */
-    font-size: 14px; /* ขนาดตัวอักษร */
-    color: white; /* สีตัวอักษร */
-}
+} */

@@ -107,6 +107,53 @@ td {
     #button-add-task:hover {
         background-color: #3b3b3b;
     }
+    #container-Date {
+        display: inline-block;
+        position: absolute;
+        right: 135px;
+        top: 97%;
+        transform: translateY(-100%);
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        width: 58.16px;
+        height: 25px;
+        /* label {
+            width: 32.163px;
+            height: 16px;
+            top: 36%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        } */
+        #Date-input {
+            position: absolute;
+            width: 58.16px;
+            height: 100%;
+        }
+    }
+    #container-Date:hover {
+        background-color: #3b3b3b;
+    }
+    #container-Date:focus-within {
+        background-color: #3b3b3b;
+    }
+    /* #Date-input {
+        position: absolute;
+        right: 135px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 5px;
+        border-radius: 7px;
+    }
+    #Date-input:hover {
+        background-color: #3b3b3b;
+    } */
 }
 .duration-repeat-button {
     cursor: pointer;

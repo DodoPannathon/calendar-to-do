@@ -1,8 +1,11 @@
 let repeatOption = ''
+let year = 0
+let Month = 0
+let today = 0
+const currentdate = new Date();
 
 document.addEventListener("DOMContentLoaded", () => {
-    const today = new Date();
-    const currentDay = today.getDate();
+    const currentDay = currentdate.getDate();
 
     const numbers = document.querySelectorAll(".number");
     numbers.forEach((number) => {
@@ -94,31 +97,35 @@ function displayrepeat() {
 };
 function submittask() {
     console.log("submit")
-    let textInput = document.getElementById('text-input').value;
-    const today = new Date();
-    const currentMonth = today.getMonth() + 1;
-    const currenttoday = today.getDate();
-    if (repeatOption === 'day') {
-        for (let i = currenttoday; i <= 31; i++) {
-            addtaskincalendar(textInput,currentMonth,i);
-            console.log("day")
-        };
-    } else if (repeatOption === 'week') {
-        for (let i = currenttoday; i <= 31; i += 7) {
-            addtaskincalendar(textInput,currentMonth,i);
-            console.log("week")
-        };
-    }else if (repeatOption === 'month') {
-        for (let i = currenttoday; i <= 31; i += 30) {
-            addtaskincalendar(textInput,i);
-            console.log("month")
-        };
+    const textInput = document.getElementById('text-input').value;
+    const datevalue = document.getElementById('Date-input').value;
+    if (datevalue) {
+        [year, Month, today] = datevalue.split('-')
     } else {
-        addtaskincalendar(textInput,currentMonth,currenttoday);
+        Month = currentdate.getMonth() + 1;
+        today = currentdate.getDate();
+    };
+    if (repeatOption === 'day') {
+        for (let i = today; i <= 31; i++) {
+            addtaskincalendar(textInput, Month, i);
+            console.log("day")
+        }
+    } else if (repeatOption === 'week') {
+        for (let i = today; i <= 31; i += 7) {
+            addtaskincalendar(textInput, Month, i);
+            console.log("week")
+        }
+    } else if (repeatOption === 'month') {
+        for (let i = Month; i <= 12; i++) {
+            addtaskincalendar(textInput, i, today);
+            console.log("month")
+        }
+    } else {
+        addtaskincalendar(textInput, Month, today);
         console.log("Today")
     }
     repeatOption = "";
-    textInput = "";
+    document.getElementById('text-input').value = "";
 };
 function addtaskincalendar(text,month,day) {
     const divtask = document.querySelector(`#task-${month}-${day}`)

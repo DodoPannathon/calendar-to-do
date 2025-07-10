@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/DodoPannathon/caledar-to-do#readme",
   "devDependencies": {
-    "electrom": "^19.3.1"
+    "electrom": "^19.3.0"
+  },
+  "dependencies": {
+    "fullcalendar": "^6.1.18"
   }
 }

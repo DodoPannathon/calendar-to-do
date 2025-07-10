@@ -4,6 +4,14 @@ let Month = 0
 let today = 0
 const currentdate = new Date();
 
+document.addEventListener('DOMContentLoaded', function() {
+    const calendarEl = document.getElementById("calendar")
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth'
+    });
+    calendar.render();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const currentDay = currentdate.getDate();
 

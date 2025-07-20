@@ -6,21 +6,20 @@
     <title>Calendar To Do</title>
     <link rel="stylesheet" href="styles.css">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.18/index.global.min.js'></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    <div id="add-task">
-        <!-- <button id="displayaddtask" onclick="displayaddtask()">Add Task</button> -->
-        <input id="text-input" type="text" required>
-        <label for="text-input">Enter you task</label>
-        <div id="container-Date">
-          <input id="Date-input" type="date" required>
-          <!-- <label for="Date-input">Date</label> -->
-        </div>
-        <!-- <input id="Date-input" type="date" required> -->
-        <button id="repeat-task" type="button" onclick="displayrepeat()">Repeat</button>
-        <button id="button-add-task" type="button" onclick="submittask()">Add Task</button>
-    </div>
-    <div id="calendar"></div>
-      <script src="script.js"></script>
+  <div id="calendar"></div>
+  <div id="add-task">
+      <input id="text-input" type="text" required>
+      <label for="text-input">Enter you task</label>
+      <div id="container-Date">
+        <input id="Date-input" type="date" required>
+        <!-- <label for="Date-input">Date</label> -->
+      </div>
+      <button id="repeat-task" type="button" onclick="displayrepeat()">Repeat</button>
+      <button id="button-add-task" type="button" onclick="submittask()">Add Task</button>
+  </div>
+
 </body>
 </html>

@@ -21,6 +21,7 @@
     "electrom": "^19.3.0"
   },
   "dependencies": {
+    "dayjs": "^1.11.13",
     "fullcalendar": "^6.1.18"
   }
 }

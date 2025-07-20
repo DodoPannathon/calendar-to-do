@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 let repeatOption = ''
 let year = 0
 let Month = 0
@@ -10,18 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'dayGridMonth'
     });
     calendar.render();
+    calendar.setOption('height', 700);
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-    const currentDay = currentdate.getDate();
-
-    const numbers = document.querySelectorAll(".number");
-    numbers.forEach((number) => {
-        if (parseInt(number.textContent) === currentDay) {
-            number.parentElement.classList.add("current-day");
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    const divparent = document.querySelectorAll('.fc-daygrid-day-events');
+    divparent.forEach(target => {
+        const divcontent = document.createElement('div');
+        divcontent.setAttribute('class', 'task-bundle');
+        target.appendChild(divcontent)
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        [text, year, Month, today] = value.split('-');
+        addtaskincalendar(text, year, Month, today);
+        console.log('load task');
+    };
+});
+// document.addEventListener("DOMContentLoaded", () => {
+//     const currentDay = currentdate.getDate();
+
+//     const numbers = document.querySelectorAll(".number");
+//     numbers.forEach((number) => {
+//         if (parseInt(number.textContent) === currentDay) {
+//             number.parentElement.classList.add("current-day");
+//         }
+//     });
+// });
 // function displayaddtask() {
 //     const form = document.createElement("form");
 //     const addtask = document.querySelector('.add-task')
@@ -110,42 +129,52 @@ function submittask() {
     if (datevalue) {
         [year, Month, today] = datevalue.split('-')
     } else {
+        year = currentdate.getFullYear();
         Month = currentdate.getMonth() + 1;
         today = currentdate.getDate();
     };
+    Month = "0" + `${Month}`;
     if (repeatOption === 'day') {
-        for (let i = today; i <= 31; i++) {
-            addtaskincalendar(textInput, Month, i);
-            console.log("day")
-        }
+        
+        // for (let i = today; i <= 31; i++) {
+        //     addtaskincalendar(textInput, year, "0" + `${Month}`, i);
+        //     console.log("day")
+        // }
     } else if (repeatOption === 'week') {
         for (let i = today; i <= 31; i += 7) {
-            addtaskincalendar(textInput, Month, i);
+            addtaskincalendar(textInput, year, "0" + `${Month}`, i);
             console.log("week")
         }
     } else if (repeatOption === 'month') {
         for (let i = Month; i <= 12; i++) {
-            addtaskincalendar(textInput, i, today);
+            addtaskincalendar(textInput, year, "0" + `${i}`, today);
             console.log("month")
         }
     } else {
-        addtaskincalendar(textInput, Month, today);
+        addtaskincalendar(textInput, year, Month, today);
         console.log("Today")
     }
     repeatOption = "";
     document.getElementById('text-input').value = "";
 };
-function addtaskincalendar(text,month,day) {
-    const divtask = document.querySelector(`#task-${month}-${day}`)
+function addtaskincalendar(text, date) {
+    const divtask = document.querySelector(`[data-date="${date}"]`)
     if (divtask) {
+        const divcontent = divtask.querySelector(".task-bundle")
         const task = document.createElement("div");
         task.setAttribute("class", "task-contianer");
         task.innerHTML = `
-            <input id="task-text-${month}-${day}" type="checkbox">
-            <label for="task-text-${month}-${day}">${text}</label>
+            <input id="task-${text}-${date}" type="checkbox">
+            <label for="task-${text}-${date}">${text}</label>
         `;
-        divtask.appendChild(task);
+        divcontent.appendChild(task);
     } else {
-        console.error(`Element with id "task-${month}-${day}" not found.`);
-    }
-}
+        console.error(`Element with date "${date}" not found.`);
+    };
+    const key = `task-${text}-${date}`;
+    const key_value = localStorage.getItem(key);
+    if (!key_value) {
+        localStorage.setItem(key, `${text}-${date}`)
+        console.log('add task in localstorage');
+    };
+};
